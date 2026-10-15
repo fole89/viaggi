@@ -15,7 +15,7 @@ La decifratura avviene nel browser.
 
 ## Pubblicare
 
-1. `python build.py` (chiede la password) per cifrare `src/` in `data/`
+1. `python build.py` (chiede la password) per cifrare `src/` in `data/` e aggiornare le versioni (`?v=`) di css e js nelle pagine
 2. commit e push
 
 Regola per i commit: messaggi generici, senza nomi di luoghi, date o dettagli dei viaggi.

@@ -12,6 +12,7 @@ import hashlib
 import hmac
 import json
 import os
+import re
 import secrets
 import sys
 from pathlib import Path
@@ -92,7 +93,23 @@ def trip_name(key, trip_id):
     return hmac.new(key, b"trip:" + trip_id.encode(), hashlib.sha256).hexdigest()[:20]
 
 
+def stamp_assets():
+    """Aggiunge ?v=<hash> ai css/js locali delle pagine, cosi' il browser non tiene la copia vecchia."""
+    def stamp(m):
+        path = m.group(2)
+        digest = hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:8]
+        return f'{m.group(1)}{path}?v={digest}"'
+    for page in ("index.html", "viaggio.html"):
+        file = ROOT / page
+        html = file.read_bytes().decode("utf-8")
+        new = re.sub(r'((?:src|href)=")(assets/[^"?]+\.(?:js|css))(?:\?v=[0-9a-f]+)?"', stamp, html)
+        if new != html:
+            file.write_bytes(new.encode("utf-8"))
+            print(f"aggiornato  {page}")
+
+
 def main():
+    stamp_assets()
     trips = json.loads((SRC / "trips.json").read_text(encoding="utf-8"))
     DATA.mkdir(exist_ok=True)
     config = load_config()
