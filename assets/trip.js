@@ -240,7 +240,8 @@ const TripView = (() => {
       ${b.status ? `<p class="ok">${icon('check-circle')}${esc(b.status)}</p>` : ''}
       ${b.info ? `<p class="info">${esc(b.info)}</p>` : ''}
       ${b.q ? `<div class="actions"><a class="btn" ${mapLink(b.q, b.ll, b.name)}>${GMAPS}Mappa</a>
-        ${b.type !== 'dinner' ? `<a class="btn" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(b.q)}" target="_blank" rel="noopener">${icon('images')}Foto</a>` : ''}</div>` : ''}
+        ${b.type !== 'dinner' ? `<a class="btn" href="https://www.google.com/search?tbm=isch&q=${encodeURIComponent(b.q)}" target="_blank" rel="noopener">${icon('images')}Foto</a>` : ''}
+        ${b.url ? `<a class="btn" href="${esc(b.url)}" target="_blank" rel="noopener">${icon('arrow-square-out')}${/booking\.com/.test(b.url) ? 'Booking' : 'Sito'}</a>` : ''}</div>` : ''}
       </div></div>`;
   }
 
