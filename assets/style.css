@@ -1,0 +1,99 @@
+/* Login e landing. Stessi token di trip.css: contenitori 16px, elementi interattivi a pillola, un solo accento. */
+:root{
+  --bg:#f3f4f6; --surface:#fcfcfd; --ink:#15171c; --muted:#565c67; --line:#e2e5ea;
+  --accent:#b4441c; --accent-soft:#f6e8e2; --night:#111827;
+  --shadow:0 1px 2px rgba(21,23,28,.05),0 6px 20px rgba(21,23,28,.06);
+  --r:16px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Geist,system-ui,-apple-system,sans-serif;overflow-x:clip}
+a,button,label{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.ph{line-height:1}
+
+/* Login */
+.login{min-height:100dvh;display:grid;place-items:end center;padding:24px 20px calc(24px + env(safe-area-inset-bottom));
+  background:var(--night) center/cover no-repeat;position:relative}
+.login::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,24,39,.15),rgba(17,24,39,.75))}
+@media (min-width:640px){.login{place-items:center}}
+.login-card{position:relative;width:100%;max-width:380px;background:var(--surface);border-radius:20px;padding:28px 24px;
+  box-shadow:0 20px 60px rgba(17,24,39,.35)}
+.login-card h1{font-size:clamp(1.75rem,1.4rem + 1.5vw,2.25rem);line-height:1.1;letter-spacing:-.03em;font-weight:700;margin:0 0 6px}
+.login-card p{margin:0 0 22px;color:var(--muted);font-size:.95rem}
+.login-card label.field{display:block;font-size:.9375rem;font-weight:600;margin-bottom:6px}
+.login-card input[type=password]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);
+  border:1px solid #c9ced6;border-radius:12px;padding:12px 14px;min-height:48px}
+.login-card input[type=password]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.remember{display:flex;gap:12px;align-items:center;font-size:.9375rem;margin:12px 0 16px;cursor:pointer;min-height:44px}
+.remember input{accent-color:var(--accent);width:22px;height:22px;margin:0}
+.login-card button{width:100%;font:inherit;font-weight:600;color:#fff;background:var(--accent);border:0;
+  border-radius:999px;min-height:48px;cursor:pointer}
+.login-card button:active{transform:scale(.98)}
+.login-card button:disabled{opacity:.6;cursor:progress}
+.err{color:var(--accent);font-size:.9375rem;min-height:1.4em;margin:12px 0 0!important}
+
+/* Landing */
+header.top{padding:20px 0 8px}
+.topbar{display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:700;font-size:1.125rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.brand i{color:var(--accent);font-size:1.3rem}
+.ghost{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:.9375rem;font-weight:500;color:var(--ink);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;min-height:44px;padding:0 16px;cursor:pointer}
+.ghost:active{transform:scale(.97)}
+.hello{padding-top:24px;padding-bottom:0}
+.hello h1{font-size:clamp(2rem,1.4rem + 3vw,3rem);line-height:1.1;letter-spacing:-.03em;font-weight:700;margin:0}
+.hello p{margin:8px 0 0;color:var(--muted)}
+section.list{padding:28px 0 8px}
+section.list h2{font-size:clamp(1.375rem,1.2rem + .8vw,1.625rem);font-weight:600;margin:0 0 14px;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:16px}
+.trip{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover){.trip:hover{transform:translateY(-2px)}}
+.trip:active{transform:scale(.99)}
+.trip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cover{aspect-ratio:16/9;background-size:cover;background-position:center;background-color:var(--night)}
+.trip .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.trip .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.dates{font-size:.9375rem;font-weight:600;color:var(--accent)}
+.badge{font-size:.875rem;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.badge.now{background:var(--accent);color:#fff}
+.badge.past{background:var(--line);color:var(--muted)}
+.trip h3{font-size:1.3rem;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:2px 0 0}
+.route{color:var(--muted);font-size:.9375rem;margin:2px 0 0}
+.tagline{font-size:.9375rem;margin:6px 0 0}
+.meta{margin-top:auto;padding-top:12px;font-size:.875rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.trip.is-past .cover{filter:saturate(.5)}
+footer.site{color:var(--muted);font-size:.875rem;padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+
+/* Loader */
+.loading{min-height:100vh;display:grid;place-items:center;color:var(--muted)}
+
+/* Prossimo viaggio in evidenza: foto grande, su desktop affiancata al testo */
+.trip.feature .cover{aspect-ratio:4/3}
+.trip.feature h3{font-size:clamp(1.5rem,1.2rem + 1.4vw,2.1rem);line-height:1.15}
+.trip.feature .body{padding:16px 20px 20px;gap:6px}
+@media (min-width:768px){
+  #upcoming .grid{grid-template-columns:1fr}
+  .trip.feature{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
+  .trip.feature .cover{aspect-ratio:auto;min-height:340px}
+  .trip.feature .body{padding:28px;justify-content:center}
+}
+/* Viaggi fatti: su telefono righe compatte con foto piccola */
+@media (max-width:639px){
+  #past .grid{gap:12px}
+  #past .trip{flex-direction:row;min-height:112px}
+  #past .cover{aspect-ratio:auto;width:112px;flex:none}
+  #past .trip .body{padding:12px 14px;gap:2px;min-width:0}
+  #past .trip .row{flex-wrap:wrap;gap:4px 8px}
+  #past .trip h3{font-size:1.125rem}
+  #past .tagline{display:none}
+  #past .route{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #past .meta{padding-top:6px}
+  #past .badge{display:none}
+}

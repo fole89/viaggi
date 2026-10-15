@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f4f6">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://commons.wikimedia.org https://upload.wikimedia.org https://thumb.wikimedia.org https://tile.openstreetmap.org; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Viaggi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/phosphor/style.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="login" id="login" hidden>
+  <form class="login-card" id="login-form">
+    <h1>Viaggi</h1>
+    <p>Area privata. Inserisci la password per entrare.</p>
+    <input type="text" name="username" value="viaggi" autocomplete="username" hidden>
+    <label class="field" for="pw">Password</label>
+    <input type="password" id="pw" autocomplete="current-password" required>
+    <label class="remember"><input type="checkbox" id="remember"> Ricordami su questo dispositivo</label>
+    <button type="submit" id="go">Entra</button>
+    <p class="err" id="err" role="alert"></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top"><div class="wrap topbar">
+    <span class="brand"><i class="ph ph-compass" aria-hidden="true"></i>Viaggi</span>
+    <button class="ghost" id="logout"><i class="ph ph-sign-out" aria-hidden="true"></i>Esci</button>
+  </div></header>
+  <div class="wrap hello">
+    <h1>Dove andiamo</h1>
+    <p id="summary"></p>
+  </div>
+  <main class="wrap">
+    <section class="list" id="upcoming"><h2>In programma</h2><div class="grid"></div></section>
+    <section class="list" id="past"><h2>Già fatti</h2><div class="grid"></div></section>
+  </main>
+  <footer class="wrap site">I contenuti sono cifrati e vengono decifrati solo nel tuo browser.</footer>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/index.js"></script>
+</body>
+</html>

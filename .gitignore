@@ -1,0 +1,10 @@
+# Sorgenti in chiaro: non devono mai finire su GitHub
+src/
+
+.venv/
+.idea/
+__pycache__/
+
+# Mai committare password
+.password
+*.password
